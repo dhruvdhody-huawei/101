@@ -1,0 +1,176 @@
+PCE Working Group Meeting - Tuesday, March 20, 2018; 13:30-15:30
+Afternoon session I
+
+   o Slides: https://datatracker.ietf.org/meeting/101/session/pce
+   o Meetecho: http://www.meetecho.com/ietf101/pce
+   o Chairs: Jonathan Hardwick, Julien Meuric (remote)
+   o Secretery: Dhruv Dhody
+
+1. Introduction
+1.1. Administrivia, Agenda Bashing (chairs, 5 min)
+-
+1.2. WG Status (chairs, 17 min) [22/120]
+
+   Dhruv Dhody (for draft-ietf-pce-inter-area-as-applicability): Dan
+   King is the editor, but one decision that is pending is about
+   including Stateful PCE details in this I-D. 
+   Jonathan Hardwick: Better to include stateful PCE details, as that
+   would be bit obsolete. 
+   Dhruv (for draft-ietf-pce-pcep-yang): update with new examples and
+   clarification on its use, and now ready for YANG doctor review.
+   Haomian Zheng: (for draft-ietf-pce-enhanced-errors): updated draft
+   with new error types, and reference up-to-date. Need confirmation
+   with WG on the direction. 
+   Dhruv (for draft-ietf-pce-stateful-pce-lsp-scheduling): made an
+   update before this IETF and aligned to the published TEAS RFC, more
+   reviews are requested. 
+   Dhruv (question on segment routing draft): We have PCEP segment
+   routing extension (ready to sent to IESG) and then there is SR TE
+   policy (via BGP), we have never discussed how they interact or work
+   together; and there has been confusion on this while discussing with
+   customers.
+   Jon: Please send a pointer. 
+
+2. Other WGs I-Ds
+2.1. Flagging MD5 out as an authentication mechanism (Stewart Bryant, 
+3 min) [25/120] 
+draft-nslag-mpls-deprecate-md5-01
+
+   Jon: If you care about this, please go to MPLS WG session. 
+
+2.2. BIER-TE (Toerless Eckert, 15 min) [40/120]
+draft-eckert-teas-bier-te-framework-00
+
+   Jon: Thank you for bringing this to the PCE WG, we have worked on
+   multicast for PCE, so it would be good to have further discussion as
+   well as watch the progress in TEAS WG. 
+
+3. WG I-Ds
+3.1. Stateful PCE for GMPLS (Young Lee, 10 min) [50/120]
+draft-ietf-pce-pcep-stateful-pce-gmpls-08
+
+   Jon: Time to get some reviews, as we prepare for WG LC
+
+3.2. Update on Association Drafts (Dhruv Dhody, 10 min) [60/120]
+Various Drafts
+
+   Jon: I will do my shepherd review, once done we could start looking
+   at other WG I-D. Time to poll adoption for protection draft. Open to
+   discuss the order of other related drafts if there any dependency or
+   we could approach in the order they arrive. This is a key piece and
+   we formalize the idea of associating the LSP and thus we need to make
+   sure that the base association group draft is bang on! 
+
+3.3. Stateful H-PCE (Dhruv Dhody, 10 min) [70/120]
+draft-ietf-pce-stateful-hpce-04
+draft-ietf-pce-hierarchy-extensions-04
+
+   Jon: Good to see H-PCE extn revived, and we could last call this now.
+   Will forward these works in that order. 
+
+3.4. ACTN Applicability (Young Lee, 5 min) [75/120]
+draft-ietf-pce-applicability-actn-05
+
+   Jon: Who has read? (about 10)
+   Jon: The document is stable and would be put in the queue. We are
+   looking for shepherd if someone can. 
+
+4. New I-Ds
+4.1. Relax Constraints in Stateful PCE (Stephane Litkowski, 
+10 min) [85/120]
+draft-dhody-pce-stateful-pce-optional-00
+
+   Adrian Farrel: Absolutely a problem to solve. Could you end up with a
+   mechanism to trade options in a flexible/horrible way by ranking
+   them.
+   Stephane: This exist for stateless already.
+   Adrian: This could be worse. 
+   Jon: (as an individual) A valid problem, and a reasonable approach,
+   we may consider to make this more flexible in future. Question:
+   Relationship with the relax-constraint draft?
+   Stephene: Relax-Constraints TLV is removed from the diversity
+   association draft and we choose this generic method (using existing
+   flags).
+   Jon: Prefer to keep it simple. 
+
+4.2. PCEP extensions for SR-TP (Xiong Quan, 10 min) [95/120]
+draft-xiong-pce-pcep-extension-sr-tp-00
+
+   Adrian: You have something good here! But what actually is SR-TP (you
+   just have SR LSP)?
+   Xiong Quan: A new network where SR technology is used in MPLS-TP (SR-
+   TP in short) 
+   Adrian: Are you after the Central Control aspects and the PCE
+   approach to program the head-end. SR-TP is marketing. Does the
+   forward and reverse LSP have to be the same technology i.e. SR one
+   way, conventional LSP the other? Pointing to another tunnel and not
+   the type of tunnel would be useful.
+   Dhruv: Can this be done with existing SR-ERO and the bi-dir
+   association object? What is the value of path label sub-object and
+   why is it needed? 
+   Himanshu Shah: MPLS-TP is well known, as Dhruv said, is it possible
+   to implement this with what we already have by configuration on both
+   ends?
+   Xiong: SR is uni-directional, for bi-directional SR we need to bind
+   the two directions and path label is required for SR network.
+   Xin Wan: (slide 2) We notice a "controller" in the problem statement
+   draft which implements SR-TP, which may be different with the PCE
+   function, you may need to specify the difference.
+   Stewart Bryant: The reason for the additional path label is not
+   clear, as you have pseudowire over MPLS-TP and pseudowire label can
+   do this! 
+   Jon: Explain why is the additional "path-label" needed? 
+   Stewart: Some mechanism is needed for sure because this is SR and
+   label is lost till the packet reaches the end, but can pseudowire
+   label can play that role.
+
+5. Previously Discussed Topics
+5.1. Residual Bandwidth (Daniele Ceccarelli, 5 min) [100/120]
+draft-lazzeri-pce-residual-bw-01
+
+   Jon: How many have read the latest version (about half dozen).
+   Jon: How many think this is a useful to work on (4-5). 
+   Jon: This version has clearer technical requirements, there is mild
+   interest, will confirm on the list. 
+
+5.2. PCEP for Native IP (Aijun Wang, 5 min) [105/120]
+draft-wang-pce-pcep-extension-native-ip-01
+
+   Jon: This is an application of PCE that is a bit outside its usual
+   use, in an IP only network. TEAS WG has adopted this work.     
+   Jon: Who is aware of this work and in the TEAS? (around 10)
+   Jon: Who would like to see this adopted in PCE? (around 8) 
+   Jon: Who would not like this being worked on? (no one) 
+   Jon: Will confirm on the mailing list! 
+
+6. Update on SDN discussion (Chairs, 15 mins) [120/120]
+
+   Adrian: I find this is hard, i can see reason for/against. When BGP-
+   LS was proposed, we were note sure if that was a good idea. Get
+   feedback from operations community or OPS AD. 
+   Jon: Good Idea. 
+   Robin Li: IGP is really not a good option because of multi-hop (need
+   to setup tunnel). 
+   Jon: We need to get a good idea on why BGP-LS and Netconf is not
+   suitable?
+   Robin: Netconf's performance is not good enough, so the only
+   candidate left is BGP-LS. Regarding inter-op we need to consider
+   controller as well as device. Some operator are scared of BGP. 
+   Jon: BGP-LS is not quite BGP. You don't need full blown BGP.
+   Haomian: Good summary. Presence of other ways to do this should not
+   have a technical impact. The Link State is a important part of
+   preparing PCE for path computation function. The PCEP-LS does not
+   replace any existing technology, it is just another option. There is
+   another draft in CCAMP that discuss the interaction between various
+   protocols in different scenarios, but PCEP is an important piece.
+   Young: For optical vendor, BGP-LS is not possible (no one implements
+   that). There is a study on large scale network where PCEP-LS sending
+   it north bound leads to faster convergence esp with lot of optical
+   data (making PCEP-LS faster). 
+   Himanshu: Neutral to this discussion, if we already have PCEP
+   connection, reuse of PCEP is a good idea (without implementing
+   another protocol - IGP, BGP etc). That could be in favor of PCEP-LS!
+   
+   Jon: We will continue on the list! 
+
+<Meeting Adjourned>
